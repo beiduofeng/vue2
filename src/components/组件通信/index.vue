@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 子传父 -->
-        <inp @addItem="this.AddItem" />
+        <inp @addItem="emitsAddItem" />
         <!-- 父传子 -->
         <list :msg2="this.msg2" />
     </div>
@@ -18,16 +18,16 @@ export default {
     data() {
         return {
             //传至index
-            msg2: {
-                a: 1,
-                b: 2,
-                c: 3
-            }
+            msg2: ['zhangSan', 'liSi', 'wangWu', 'maZi', 'liLiu']
         }
     },
     methods: {
-        fun() {
-            console.log(this.AddItem, '111')
+        emitsAddItem() {
+            console.log(this.name)
+            this.msg2.push(this.name)
+        },
+        delItem() {
+            this.msg2.pop(this.name)
         }
     }
 }
